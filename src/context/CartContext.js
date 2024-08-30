@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 
 export const CartContext = createContext();
 
@@ -6,7 +6,16 @@ export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
     const addItem = (item) => {
-        setCart([...cart, item]);
+        setCart((prevCart) => {
+            const existingItemIndex = prevCart.findIndex(cartItem => cartItem.id === item.id);
+            if (existingItemIndex >= 0) {
+                const updatedCart = [...prevCart];
+                updatedCart[existingItemIndex].quantity += item.quantity;
+                return updatedCart;
+            } else {
+                return [...prevCart, item];
+            }
+        });
     };
 
     const cartQuantity = () => {
@@ -26,4 +35,12 @@ export const CartProvider = ({ children }) => {
             {children}
         </CartContext.Provider>
     );
+};
+
+export const useCart = () => {
+    const context = useContext(CartContext);
+    if (context === undefined) {
+        throw new Error('useCart must be used within a CartProvider');
+    }
+    return context;
 };

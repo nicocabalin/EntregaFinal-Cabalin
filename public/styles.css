@@ -39,3 +39,54 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    display: inline;
+    margin-right: 15px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.cart-widget img {
+    width: 24px; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+}
+
+.item-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.item {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 5px;
+    width: calc(33% - 2rem); /* Ajusta el ancho según sea necesario */
+    box-sizing: border-box;
+}
+
+.item img {
+    max-width: 100%;
+    height: auto;
+}
